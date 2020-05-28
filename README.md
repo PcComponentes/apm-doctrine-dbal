@@ -62,7 +62,7 @@ connection.dbal.test.configuration:
         - '@apm.dbal.test'
 
 apm.dbal.test:
-  class: Pcc\ApiLegacyBridge\Util\ElasticAPM\DBAL\SQLLogger
+  class: PcComponentes\ElasticAPM\Doctrine\DBAL\Logging\SQLLogger
   arguments:
     $elasticApmTracer: '@apm.tracer' # \ZoiloMora\ElasticAPM\ElasticApmTracer instance.
     $instance: 'test'
