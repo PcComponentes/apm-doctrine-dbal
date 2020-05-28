@@ -1,6 +1,6 @@
 # Elastic APM for Doctrine DBAL
 
-This library supports Span traces of SQL queries using Doctrine DBAL.
+This library supports Span traces of SQL queries using [Doctrine DBAL](https://github.com/doctrine/dbal).
 
 ## Installation
 
