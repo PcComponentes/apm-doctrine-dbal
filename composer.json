@@ -17,7 +17,7 @@
   "require": {
     "php": "^7.4",
     "doctrine/dbal": "^2.10",
-    "zoilomora/elastic-apm-agent-php": "^0.1.9"
+    "zoilomora/elastic-apm-agent-php": "^0.1"
   },
   "require-dev": {
     "pccomponentes/coding-standard": "^1.0"
