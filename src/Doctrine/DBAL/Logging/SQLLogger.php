@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PcComponentes\ElasticAPM\Doctrine\DBAL\Logging;
 
+use Aaronidas\SQLLexer\SQL\Signature;
 use Doctrine\DBAL\Logging\SQLLogger as SQLLoggerBase;
 use ZoiloMora\ElasticAPM\ElasticApmTracer;
 use ZoiloMora\ElasticAPM\Events\Span\Context;
@@ -45,9 +46,11 @@ final class SQLLogger implements SQLLoggerBase
             return;
         }
 
+        $spanName = Signature::parse($sql);
+
         try {
             $this->span = $this->elasticApmTracer->startSpan(
-                self::SPAN_NAME,
+                '' !== $spanName ? $spanName : self::SPAN_NAME,
                 self::SPAN_TYPE,
                 $this->engine,
                 self::SPAN_ACTION,
