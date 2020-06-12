@@ -40,6 +40,10 @@ final class SQLLogger implements SQLLoggerBase
 
     public function startQuery($sql, ?array $params = null, ?array $types = null)
     {
+        if (false === $this->elasticApmTracer->active()) {
+            return;
+        }
+
         if (true === \in_array($sql, self::EXCLUDED_QUERIES, true)) {
             $this->span = null;
 
