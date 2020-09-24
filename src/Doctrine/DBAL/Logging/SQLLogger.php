@@ -28,13 +28,20 @@ final class SQLLogger implements SQLLoggerBase
     private ElasticApmTracer $elasticApmTracer;
     private string $instance;
     private string $engine;
+    private bool $debugMode;
+
     private ?Span $span;
 
-    public function __construct(ElasticApmTracer $elasticApmTracer, string $instance, string $engine)
-    {
+    public function __construct(
+        ElasticApmTracer $elasticApmTracer,
+        string $instance,
+        string $engine,
+        bool $debugMode = false
+    ) {
         $this->elasticApmTracer = $elasticApmTracer;
         $this->instance = $instance;
         $this->engine = $engine;
+        $this->debugMode = $debugMode;
         $this->span = null;
     }
 
@@ -44,7 +51,7 @@ final class SQLLogger implements SQLLoggerBase
             return;
         }
 
-        if (true === \in_array($sql, self::EXCLUDED_QUERIES, true)) {
+        if (false === $this->debugMode && true === \in_array($sql, self::EXCLUDED_QUERIES, true)) {
             $this->span = null;
 
             return;
