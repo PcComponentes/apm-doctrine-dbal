@@ -15,9 +15,9 @@
     }
   },
   "require": {
-    "php": "^7.4",
+    "php": "^7.4 | ^8.0",
     "doctrine/dbal": "^2.10",
-    "zoilomora/elastic-apm-agent-php": "^0.1",
+    "zoilomora/elastic-apm-agent-php": "^1.0",
     "aaronidas/apm-sql-lexer": "^0.0"
   },
   "require-dev": {
